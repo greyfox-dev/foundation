@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	ferr "github.com/foundation-go/foundation/errors"
+	ferr "github.com/uplatform-ai/foundation/errors"
 )
 
 const (

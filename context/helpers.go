@@ -3,7 +3,7 @@ package context
 import (
 	"context"
 
-	ferr "github.com/foundation-go/foundation/errors"
+	ferr "github.com/uplatform-ai/foundation/errors"
 )
 
 // CheckAllScopesPresence checks if the context contains all specified scopes.

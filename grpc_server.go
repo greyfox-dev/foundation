@@ -8,7 +8,7 @@ import (
 	"github.com/getsentry/sentry-go"
 	"google.golang.org/grpc"
 
-	fg "github.com/foundation-go/foundation/grpc"
+	fg "github.com/uplatform-ai/foundation/grpc"
 )
 
 // GRPCServer represents a gRPC server mode Foundation service.

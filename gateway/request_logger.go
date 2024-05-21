@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	fctx "github.com/foundation-go/foundation/context"
-	fhttp "github.com/foundation-go/foundation/http"
+	fctx "github.com/uplatform-ai/foundation/context"
+	fhttp "github.com/uplatform-ai/foundation/http"
 
 	"github.com/google/uuid"
 )

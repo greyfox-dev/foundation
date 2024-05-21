@@ -116,7 +116,7 @@ func checkFoundationDep(gomodPath string) (bool, error) {
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		if strings.Contains(scanner.Text(), "github.com/foundation-go/foundation") {
+		if strings.Contains(scanner.Text(), "github.com/uplatform-ai/foundation") {
 			return true, nil
 		}
 	}

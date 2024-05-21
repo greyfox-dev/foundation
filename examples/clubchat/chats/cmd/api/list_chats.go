@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 
-	fctx "github.com/foundation-go/foundation/context"
-	ferr "github.com/foundation-go/foundation/errors"
-	pb "github.com/foundation-go/foundation/examples/clubchat/protos/chats"
+	fctx "github.com/uplatform-ai/foundation/context"
+	ferr "github.com/uplatform-ai/foundation/errors"
+	pb "github.com/uplatform-ai/foundation/examples/clubchat/protos/chats"
 )
 
 func (s *chatsServer) ListChats(ctx context.Context, req *pb.ListChatsRequest) (*pb.ChatsList, error) {

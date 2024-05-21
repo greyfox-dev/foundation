@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	ferr "github.com/foundation-go/foundation/errors"
+	ferr "github.com/uplatform-ai/foundation/errors"
 )
 
 func TestFoundationErrorToStatusInterceptor(t *testing.T) {

@@ -8,7 +8,7 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/spf13/cobra"
 
-	h "github.com/foundation-go/foundation/internal/cli/helpers"
+	h "github.com/uplatform-ai/foundation/internal/cli/helpers"
 )
 
 var Start = &cobra.Command{

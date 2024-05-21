@@ -3,9 +3,9 @@ package foundation
 import (
 	"errors"
 
-	fjobs "github.com/foundation-go/foundation/jobs"
 	"github.com/getsentry/sentry-go"
 	"github.com/gocraft/work"
+	fjobs "github.com/uplatform-ai/foundation/jobs"
 )
 
 func (s *Service) GetJobsEnqueuer() *work.Enqueuer {

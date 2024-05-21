@@ -10,9 +10,9 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 
-	f "github.com/foundation-go/foundation"
-	"github.com/foundation-go/foundation/internal/cli/helpers"
-	"github.com/foundation-go/foundation/internal/cli/templates"
+	f "github.com/uplatform-ai/foundation"
+	"github.com/uplatform-ai/foundation/internal/cli/helpers"
+	"github.com/uplatform-ai/foundation/internal/cli/templates"
 )
 
 type newInput struct {

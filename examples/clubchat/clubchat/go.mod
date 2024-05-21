@@ -1,11 +1,11 @@
-module github.com/foundation-go/foundation/examples/clubchat/clubchat
+module github.com/uplatform-ai/foundation/examples/clubchat/clubchat
 
-go 1.21
+go 1.22
 
-replace github.com/foundation-go/foundation => ../../../
+replace github.com/uplatform-ai/foundation => ../../../
 
 require (
-	github.com/foundation-go/foundation v0.0.0-00010101000000-000000000000
+	github.com/uplatform-ai/foundation v0.0.0-00010101000000-000000000000
 	google.golang.org/protobuf v1.31.0
 )
 

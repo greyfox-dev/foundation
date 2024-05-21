@@ -3,9 +3,9 @@ package foundation
 import (
 	"errors"
 
-	fkafka "github.com/foundation-go/foundation/kafka"
 	"github.com/getsentry/sentry-go"
 	"github.com/segmentio/kafka-go"
+	fkafka "github.com/uplatform-ai/foundation/kafka"
 )
 
 // NewMessageFromEvent creates a new Kafka message from a Foundation Outbox event

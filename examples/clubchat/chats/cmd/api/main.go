@@ -1,9 +1,9 @@
 package main
 
 import (
-	f "github.com/foundation-go/foundation"
-	ferr "github.com/foundation-go/foundation/errors"
-	pb "github.com/foundation-go/foundation/examples/clubchat/protos/chats"
+	f "github.com/uplatform-ai/foundation"
+	ferr "github.com/uplatform-ai/foundation/errors"
+	pb "github.com/uplatform-ai/foundation/examples/clubchat/protos/chats"
 
 	"google.golang.org/grpc"
 )

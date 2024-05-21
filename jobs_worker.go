@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/foundation-go/foundation/jobs"
+	"github.com/uplatform-ai/foundation/jobs"
 
 	"github.com/gocraft/work"
 )

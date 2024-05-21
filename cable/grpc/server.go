@@ -7,9 +7,9 @@ import (
 	"net/url"
 	"strconv"
 
-	pb "github.com/foundation-go/foundation/cable/grpc/proto"
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
+	pb "github.com/uplatform-ai/foundation/cable/grpc/proto"
 )
 
 const (

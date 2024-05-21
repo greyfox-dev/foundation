@@ -6,7 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 
-	fctx "github.com/foundation-go/foundation/context"
+	fctx "github.com/uplatform-ai/foundation/context"
 )
 
 // LoggingUnaryInterceptor returns a gRPC unary interceptor that logs all incoming gRPC calls.

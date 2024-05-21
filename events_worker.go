@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	fctx "github.com/foundation-go/foundation/context"
-	ferr "github.com/foundation-go/foundation/errors"
-	fkafka "github.com/foundation-go/foundation/kafka"
 	"github.com/segmentio/kafka-go"
+	fctx "github.com/uplatform-ai/foundation/context"
+	ferr "github.com/uplatform-ai/foundation/errors"
+	fkafka "github.com/uplatform-ai/foundation/kafka"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	f "github.com/foundation-go/foundation"
+	f "github.com/uplatform-ai/foundation"
 	"google.golang.org/protobuf/proto"
 
-	cpb "github.com/foundation-go/foundation/examples/clubchat/protos/chats"
+	cpb "github.com/uplatform-ai/foundation/examples/clubchat/protos/chats"
 )
 
 var (

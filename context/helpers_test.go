@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	ferr "github.com/foundation-go/foundation/errors"
 	"github.com/stretchr/testify/assert"
+	ferr "github.com/uplatform-ai/foundation/errors"
 )
 
 func mockContextWithScope(scope string) context.Context {

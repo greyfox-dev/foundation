@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	fctx "github.com/foundation-go/foundation/context"
+	fctx "github.com/uplatform-ai/foundation/context"
 )
 
 func TestErrorHandler(t *testing.T) {

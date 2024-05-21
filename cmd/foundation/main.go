@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/spf13/cobra"
 
-	c "github.com/foundation-go/foundation/internal/cli/commands"
+	c "github.com/uplatform-ai/foundation/internal/cli/commands"
 )
 
 func main() {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	f "github.com/foundation-go/foundation"
+	f "github.com/uplatform-ai/foundation"
 
-	cablegrpc "github.com/foundation-go/foundation/cable/grpc"
+	cablegrpc "github.com/uplatform-ai/foundation/cable/grpc"
 )
 
 var (

@@ -1,7 +1,7 @@
 package main
 
 import (
-	f "github.com/foundation-go/foundation"
+	f "github.com/uplatform-ai/foundation"
 )
 
 var (

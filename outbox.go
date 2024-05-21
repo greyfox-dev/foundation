@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/foundation-go/foundation/outboxrepo"
+	"github.com/uplatform-ai/foundation/outboxrepo"
 	"google.golang.org/protobuf/proto"
 
-	fctx "github.com/foundation-go/foundation/context"
-	ferr "github.com/foundation-go/foundation/errors"
-	fkafka "github.com/foundation-go/foundation/kafka"
+	fctx "github.com/uplatform-ai/foundation/context"
+	ferr "github.com/uplatform-ai/foundation/errors"
+	fkafka "github.com/uplatform-ai/foundation/kafka"
 )
 
 // Event represents an event to be published to the outbox

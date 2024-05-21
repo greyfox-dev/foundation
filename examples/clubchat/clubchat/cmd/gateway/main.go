@@ -1,10 +1,10 @@
 package main
 
 import (
-	f "github.com/foundation-go/foundation"
-	fg "github.com/foundation-go/foundation/gateway"
+	f "github.com/uplatform-ai/foundation"
+	fg "github.com/uplatform-ai/foundation/gateway"
 
-	pb "github.com/foundation-go/foundation/examples/clubchat/protos/chats"
+	pb "github.com/uplatform-ai/foundation/examples/clubchat/protos/chats"
 )
 
 var (

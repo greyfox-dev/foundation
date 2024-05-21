@@ -11,11 +11,11 @@ import (
 	"github.com/getsentry/sentry-go"
 	"github.com/sirupsen/logrus"
 
-	fjobs "github.com/foundation-go/foundation/jobs"
-	fkafka "github.com/foundation-go/foundation/kafka"
-	fpg "github.com/foundation-go/foundation/postgresql"
-	fredis "github.com/foundation-go/foundation/redis"
-	fsentry "github.com/foundation-go/foundation/sentry"
+	fjobs "github.com/uplatform-ai/foundation/jobs"
+	fkafka "github.com/uplatform-ai/foundation/kafka"
+	fpg "github.com/uplatform-ai/foundation/postgresql"
+	fredis "github.com/uplatform-ai/foundation/redis"
+	fsentry "github.com/uplatform-ai/foundation/sentry"
 )
 
 const Version = "0.2.1"

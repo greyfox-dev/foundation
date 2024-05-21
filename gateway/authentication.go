@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
-	fhttp "github.com/foundation-go/foundation/http"
-	fhydra "github.com/foundation-go/foundation/hydra"
+	fhttp "github.com/uplatform-ai/foundation/http"
+	fhydra "github.com/uplatform-ai/foundation/hydra"
 )
 
 // AuthenticationHandler is a function that authenticates the request

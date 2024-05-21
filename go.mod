@@ -1,6 +1,6 @@
-module github.com/foundation-go/foundation
+module github.com/uplatform-ai/foundation
 
-go 1.21
+go 1.22
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7

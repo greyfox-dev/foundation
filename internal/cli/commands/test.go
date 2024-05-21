@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"strings"
 
-	f "github.com/foundation-go/foundation"
-	h "github.com/foundation-go/foundation/internal/cli/helpers"
 	"github.com/spf13/cobra"
+	f "github.com/uplatform-ai/foundation"
+	h "github.com/uplatform-ai/foundation/internal/cli/helpers"
 )
 
 var Test = &cobra.Command{

@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	cablegrpc "github.com/foundation-go/foundation/cable/grpc"
-	pb "github.com/foundation-go/foundation/cable/grpc/proto"
 	"github.com/getsentry/sentry-go"
 	grpcm "github.com/grpc-ecosystem/go-grpc-middleware"
+	cablegrpc "github.com/uplatform-ai/foundation/cable/grpc"
+	pb "github.com/uplatform-ai/foundation/cable/grpc/proto"
 	"google.golang.org/grpc"
 )
 

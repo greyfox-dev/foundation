@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	fhydra "github.com/foundation-go/foundation/hydra"
+	fhydra "github.com/uplatform-ai/foundation/hydra"
 )
 
 func HydraAuthenticationFunc(ctx context.Context, accessToken string) (userID string, err error) {
