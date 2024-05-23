@@ -11,8 +11,8 @@ import (
 
 // LoggingUnaryInterceptor returns a gRPC unary interceptor that logs all incoming gRPC calls.
 // It logs the method details, request, response, and any potential errors.
-func LoggingUnaryInterceptor(log *logrus.Entry) func(context.Context, interface{}, *grpc.UnaryServerInfo, grpc.UnaryHandler) (interface{}, error) {
-	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+func LoggingUnaryInterceptor(log *logrus.Entry) func(context.Context, any, *grpc.UnaryServerInfo, grpc.UnaryHandler) (any, error) {
+	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {
 		// Enhance the log with request-related fields.
 		log = log.WithFields(logrus.Fields{
 			"method": info.FullMethod,
