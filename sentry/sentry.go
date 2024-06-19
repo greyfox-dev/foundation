@@ -5,19 +5,25 @@ import (
 )
 
 type Component struct {
-	DSN string
+	DSN              string
+	AttachStacktrace bool
+	Environment      string
 }
 
-func NewComponent(dsn string) *Component {
+func NewComponent(dsn string, attachStacktrace bool, environment string) *Component {
 	return &Component{
-		DSN: dsn,
+		DSN:              dsn,
+		AttachStacktrace: attachStacktrace,
+		Environment:      environment,
 	}
 }
 
 // Start implements the Component interface.
 func (c *Component) Start() error {
 	return sentry.Init(sentry.ClientOptions{
-		Dsn: c.DSN,
+		Dsn:              c.DSN,
+		AttachStacktrace: c.AttachStacktrace,
+		Environment:      c.Environment,
 	})
 }
 

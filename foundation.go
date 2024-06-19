@@ -98,8 +98,9 @@ type MetricsConfig struct {
 
 // SentryConfig represents the configuration of a Sentry client.
 type SentryConfig struct {
-	DSN     string
-	Enabled bool
+	DSN              string
+	Enabled          bool
+	AttachStacktrace bool
 }
 
 // OutboxConfig represents the configuration of an outbox.
@@ -161,8 +162,9 @@ func NewConfig() *Config {
 			URL:     GetEnvOrString("REDIS_URL", ""),
 		},
 		Sentry: &SentryConfig{
-			DSN:     GetEnvOrString("SENTRY_DSN", ""),
-			Enabled: len(GetEnvOrString("SENTRY_DSN", "")) > 0,
+			DSN:              GetEnvOrString("SENTRY_DSN", ""),
+			Enabled:          len(GetEnvOrString("SENTRY_DSN", "")) > 0,
+			AttachStacktrace: GetEnvOrBool("SENTRY_ATTACH_STACKTRACE", true),
 		},
 		JobsEnqueuer: &JobsEnqueuerConfig{
 			Enabled:   false,
@@ -234,7 +236,11 @@ func (s *Service) addSystemComponents() error {
 
 	// Sentry
 	if s.Config.Sentry.Enabled {
-		s.Components = append(s.Components, fsentry.NewComponent(s.Config.Sentry.DSN))
+		s.Components = append(s.Components, fsentry.NewComponent(
+			s.Config.Sentry.DSN,
+			s.Config.Sentry.AttachStacktrace,
+			string(FoundationEnv()),
+		))
 	}
 
 	// PostgreSQL
