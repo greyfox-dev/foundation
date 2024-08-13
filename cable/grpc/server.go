@@ -4,12 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/url"
 	"strconv"
+	"strings"
 
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 	pb "github.com/uplatform-ai/foundation/cable/grpc/proto"
+	"github.com/uplatform-ai/foundation/http"
 )
 
 const (
@@ -75,17 +76,23 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectionRequest) (*pb.Con
 	}
 
 	if s.WithAuthentication {
-		// Parse URL from in.Env.Url and get `accessToken` from it
-		parsedURL, err := url.Parse(in.Env.Url)
-		if err != nil {
-			return nil, err
-		}
-
-		accessToken = parsedURL.Query().Get("accessToken")
-		if accessToken == "" {
+		// Parse Headers from in.Env.Headers and get `accessToken` from it
+		headers := in.Env.Headers
+		if headers == nil {
 			return unauthenticatedResp, nil
 		}
 
+		authorizationHeader, ok := headers[strings.ToLower(http.HeaderAuthorization)]
+		if !ok {
+			return unauthenticatedResp, nil
+		}
+
+		parts := strings.Split(authorizationHeader, " ")
+		if len(parts) != 2 {
+			return unauthenticatedResp, nil
+		}
+
+		accessToken = parts[len(parts)-1]
 		userID, err := s.AuthenticationFunc(ctx, accessToken)
 		if err != nil {
 			s.Logger.WithError(err).Error("Authentication failed")
