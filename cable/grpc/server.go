@@ -123,7 +123,8 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectionRequest) (*pb.Con
 }
 
 func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.CommandResponse, error) {
-	s.Logger.WithField("command", in.Command).Debug("Command received")
+	logger := s.Logger.WithField("command", in.Command).WithField("identifier", in.Identifier)
+	logger.Debug("Command received")
 
 	resp := &pb.CommandResponse{
 		Status: pb.Status_SUCCESS,
@@ -135,7 +136,7 @@ func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.Comman
 
 	ident, err := s.decodeIdentifier(in.Identifier)
 	if err != nil {
-		s.Logger.WithError(err).Error("Failed to parse identifier")
+		logger.WithError(err).Error("Failed to parse identifier")
 
 		return &pb.CommandResponse{
 			Status:   pb.Status_FAILURE,
@@ -154,7 +155,7 @@ func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.Comman
 
 		ch, err := s.channelFromIdent(ident)
 		if err != nil {
-			s.Logger.WithError(err).Error("Channel not found")
+			logger.WithError(err).Error("Channel not found")
 
 			return &pb.CommandResponse{
 				Status:        pb.Status_FAILURE,
@@ -164,7 +165,7 @@ func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.Comman
 		}
 
 		if err = ch.Authorize(ctx, in.Env.Cstate[UserIDKey], ident); err != nil {
-			s.Logger.WithError(err).Debug("Authorization failed")
+			logger.WithError(err).Debug("Authorization failed")
 
 			return &pb.CommandResponse{
 				Status:        pb.Status_FAILURE,
@@ -175,12 +176,13 @@ func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.Comman
 
 		resp.Streams = ch.GetStreams(ctx, in.Env.Cstate[UserIDKey], ident)
 		resp.Transmissions = []string{fmt.Sprintf(ConfirmSubscriptionMessageTemplate, escapedIdentifier)}
+		logger.WithField(UserIDKey, in.Env.Cstate[UserIDKey]).Debugf("Subscribed to streams: %v", resp.Streams)
 
 		return resp, nil
 	case CmdUnsubscribe:
 		ch, err := s.channelFromIdent(ident)
 		if err != nil {
-			s.Logger.WithError(err).Error("Channel not found")
+			logger.WithError(err).Error("Channel not found")
 
 			return &pb.CommandResponse{
 				Status:   pb.Status_FAILURE,
@@ -189,10 +191,11 @@ func (s *Server) Command(ctx context.Context, in *pb.CommandMessage) (*pb.Comman
 		}
 
 		resp.StoppedStreams = ch.GetStreams(ctx, in.Env.Cstate[UserIDKey], ident)
+		logger.WithField(UserIDKey, in.Env.Cstate[UserIDKey]).Debugf("Unsubscribed from streams: %v", resp.StoppedStreams)
 
 		return resp, nil
 	default:
-		s.Logger.WithField("command", in.Command).Error("Unknown command")
+		logger.Error("Unknown command")
 
 		return &pb.CommandResponse{
 			Status:   pb.Status_ERROR,
