@@ -87,6 +87,7 @@ type KafkaConsumerConfig struct {
 type KafkaProducerConfig struct {
 	Enabled      bool
 	BatchSize    int
+	BatchBytes   int64
 	BatchTimeout int
 }
 
@@ -146,6 +147,7 @@ func NewConfig() *Config {
 			Producer: &KafkaProducerConfig{
 				Enabled:      false,
 				BatchSize:    GetEnvOrInt("KAFKA_PRODUCER_BATCH_SIZE", 1),
+				BatchBytes:   int64(GetEnvOrInt("KAFKA_PRODUCER_BATCH_BYTES", 16842752)), // 16 Mb
 				BatchTimeout: GetEnvOrInt("KAFKA_PRODUCER_BATCH_TIMEOUT", 1),
 			},
 			TLSDir: GetEnvOrString("KAFKA_TLS_DIR", ""),
@@ -270,6 +272,7 @@ func (s *Service) addSystemComponents() error {
 			fkafka.WithProducerLogger(s.Logger),
 			fkafka.WithProducerTLSDir(s.Config.Kafka.TLSDir),
 			fkafka.WithProducerBatchSize(s.Config.Kafka.Producer.BatchSize),
+			fkafka.WithProducerBatchBytes(s.Config.Kafka.Producer.BatchBytes),
 			fkafka.WithProducerBatchTimeout(time.Duration(s.Config.Kafka.Producer.BatchTimeout)*time.Second),
 		))
 	}

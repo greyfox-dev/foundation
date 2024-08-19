@@ -140,6 +140,7 @@ type ProducerComponent struct {
 	logger       *logrus.Entry
 	tlsDir       string
 	batchSize    int
+	batchBytes   int64
 	batchTimeout time.Duration
 }
 
@@ -171,6 +172,13 @@ func WithProducerTLSDir(tlsDir string) ProducerComponentOption {
 func WithProducerBatchSize(batchSize int) ProducerComponentOption {
 	return func(c *ProducerComponent) {
 		c.batchSize = batchSize
+	}
+}
+
+// WithProducerBatchBytes sets the batching size for the ProducerComponent
+func WithProducerBatchBytes(batchBytes int64) ProducerComponentOption {
+	return func(c *ProducerComponent) {
+		c.batchBytes = batchBytes
 	}
 }
 
@@ -207,6 +215,7 @@ func (c *ProducerComponent) Start() error {
 		Logger:                 c.logger,
 		Transport:              transport,
 		Balancer:               &kafka.Hash{}, // distribute messages to partitions based on the hash of the key, round-robin if no key
+		BatchBytes:             c.batchBytes,
 	}
 
 	c.Producer = producer
