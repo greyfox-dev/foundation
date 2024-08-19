@@ -125,8 +125,11 @@ func (h *CableMessageEventHandler) Handle(ctx context.Context, event *Event, msg
 
 	// If the stream is empty, we don't want to broadcast the message.
 	if stream == "" {
+		h.Logger.Debugf("No stream for event `%s`", event.ProtoName)
 		return nil, nil
 	}
+
+	h.Logger.Debugf("Broadcasting event `%s` to stream `%s`", event.ProtoName, stream)
 
 	// Broadcast the message to the stream.
 	// If the broadcast fails, we log the error, capture it with Sentry and go on to avoid infinite loops.
