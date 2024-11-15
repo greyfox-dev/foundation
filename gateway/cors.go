@@ -65,6 +65,10 @@ func getUniqueStrings(input []string) []string {
 }
 
 func setDefaultCORSOptions(options *CORSOptions) *CORSOptions {
+	if options == nil {
+		options = NewCORSOptions()
+	}
+
 	if options.AllowedOrigin == "" {
 		options.AllowedOrigin = corsAllowedOrigin
 	}
