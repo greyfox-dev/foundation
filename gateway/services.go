@@ -49,7 +49,10 @@ func RegisterServices(services []*Service, opts *RegisterServicesOptions) (http.
 		}
 	}
 
-	grpcOpts := []grpc.DialOption{grpc.WithTransportCredentials(connCreds)}
+	grpcOpts := []grpc.DialOption{
+		grpc.WithTransportCredentials(connCreds),
+		grpc.WithDefaultServiceConfig(`{"loadBalancingConfig": [{"round_robin":{}}]}`),
+	}
 
 	// Register gRPC server endpoints
 	for _, service := range services {
